@@ -1,0 +1,194 @@
+/*
+This program asks the user to input the age of a patient and use if/else statements to allocate them to an age group
+Through the usage of loops this program as allows the user to continue to add patient data using a questions as well as generating the histogram
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void space();
+
+int main()
+{
+	cout << "Hello, Hospital Administrator, Input the data below as the following questions pop-up " << endl; 
+	cout << "Remember not to add the same patient twice as we only do one visit a day and no ages above 109" << endl;
+	cout << "If an age is not 0 - 109 is inputted you can no longer input data" << endl;
+
+	// Declaring the data types and names for variables
+	int age, Age0_19, Age20_39, Age40_69, Age70_89, Age90_109, i, NumberofPatients, HighestAge, LowestAge;
+
+	// Setting the number of people in each age group to 0
+	Age0_19 = 0;
+	Age20_39 = 0;
+	Age40_69 = 0;
+	Age70_89 = 0;
+	Age90_109 = 0;
+
+	HighestAge = 0;
+	LowestAge = 109;
+
+	// Setting NumberofPatients to 0
+	NumberofPatients = 0;
+
+	// Setting I to 0 for the loop below
+	i = 0;
+	
+	while (i<1){
+		space();
+		cout << "What is the age of the patient: " << endl;
+		cin >> age;
+		
+		if ((age >= 0) && (age < 110)) { // This is to stop the ages being outside of 0 - 109
+			if (HighestAge <= age) {
+				HighestAge = age;
+			}
+			if (LowestAge >= age) {
+				LowestAge = age;
+			}
+		}
+
+		// If/Else statements to work out what age group this outpatient is in
+		if ((age >= 0) && (age < 20)) {
+			space();
+			cout << "This person is in the age group 0 - 19" << endl;
+			Age0_19 ++;
+		}
+		else if ((age >= 20) && (age < 40)) {
+			space();
+			cout << "This person is in the age group 20 - 39" << endl;
+			Age20_39 ++;
+		}
+		else if ((age >= 40) && (age < 70)) {
+			space();
+			cout << "This person is in the age group 40 - 69" << endl;
+			Age40_69 ++;
+		}
+		else if ((age >= 70) && (age < 90)) {
+			space();
+			cout << "This person is in the age group 70 - 89" << endl;
+			Age70_89 ++;
+		}
+		else if ((age >= 90) && (age < 110)) {
+			space();
+			cout << "This person is in the age group  90 - 109 " << endl;
+			Age90_109 ++;
+		}
+		else {
+			space();
+			cout << "Error: This person is in none of the age groups" << endl; // Will output this statement if a user input a number outside of all of the age groups 0 - 109, this is incase of a misinput
+			NumberofPatients--; // To stop errors from being counted as actual patients
+			i++;
+		}
+
+		NumberofPatients++; // For Statistics 
+	}
+
+	// For Statistics and Vertical Histogram
+	int StatsAge0_19, StatsAge20_39, StatsAge40_69, StatsAge70_89, StatsAge90_109;
+	StatsAge0_19 = Age0_19;
+	StatsAge20_39 = Age20_39;
+	StatsAge40_69 = Age40_69;
+	StatsAge70_89 = Age70_89;
+	StatsAge90_109 = Age90_109;
+
+	// Horizontal Histogram
+	// The "" are there to make the exclamation marks be on the same line;
+
+	space();
+	cout << "Here's a histogram of all of the patients in their age groups" << endl;
+
+	// Gaps infront of them to make the exclamation mark stand out
+	
+	cout << "Age0_19   ";
+	while (Age0_19 > 0) {
+		cout << "!";
+		Age0_19--;
+	}
+	cout << "" << endl;
+
+	cout << "Age20_39  ";
+	while (Age20_39 > 0) {
+		cout << "!";
+		Age20_39--;
+	}
+	cout << "" << endl;
+
+	cout << "Age40_69  ";
+	while (Age40_69 > 0) {
+		cout << "!";
+		Age40_69--;
+	}
+	cout << "" << endl;
+
+	cout << "Age70_89  ";
+	while (Age70_89 > 0) {
+		cout << "!";
+		Age70_89--;
+	}
+	cout << "" << endl;
+
+	cout << "Age90_109 ";
+	while (Age90_109 > 0) {
+		cout << "!";
+		Age90_109--;
+	}
+	cout << "" << endl;
+
+	space();
+	cout << "Statstics: " << endl;
+	cout << "Number of Patients that visted today: " << NumberofPatients << endl;
+	cout << "Number of Patients below the age of 40: " << StatsAge0_19 + StatsAge20_39 << endl;
+	cout << "The highest age of a patient today was: " << HighestAge << endl;
+	cout << "The lowest age of a patient today was: " << LowestAge << endl;
+	space();
+
+	// Vertical Histogram
+	// The new variables was because of the method used to generate the histograms
+
+	cout << "Here's a vertical histogram of all of the patients in their age groups" << endl;
+	space();
+	cout << "" << endl;
+
+	while (StatsAge0_19 > 0) {
+		cout << "!" << endl;
+		StatsAge0_19--;
+	}
+	cout << "Age0_19" << endl;
+	cout << "" << endl;
+
+	while (StatsAge20_39 > 0) {
+		cout << "!" << endl;
+		StatsAge20_39--;
+	}
+	cout << "Age20_39" << endl;
+	cout << "" << endl;
+
+	while (StatsAge40_69 > 0) {
+		cout << "!" << endl;
+		StatsAge40_69--;
+	}
+	cout << "Age40_69" << endl;
+	cout << "" << endl;
+
+	while (StatsAge70_89 > 0) {
+		cout << "!" << endl;
+		StatsAge70_89--;
+	}
+	cout << "Age70_89" << endl;
+	cout << "" << endl;
+
+	while (StatsAge90_109 > 0) {
+		cout << "!" << endl;
+		StatsAge90_109--;
+	}
+	cout << "Age90_109" << endl;
+	cout << "" << endl;
+
+	return 0;
+}
+
+void space() // This void function is to add some design to the user interface whilst minimised the number of code
+{
+	cout << "*******************************************" << endl;
+}
